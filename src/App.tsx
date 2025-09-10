@@ -14,6 +14,11 @@ export default function App() {
     };
   }, []);
 
+  // Get the base URL for PMTiles files (works in dev and production)
+  const getBaseUrl = () => {
+    return window.location.origin;
+  };
+
   return (
     <div className={styles.mapContainer}>
       <Map
@@ -28,7 +33,7 @@ export default function App() {
         <Source
           id="admins"
           type="vector"
-          url="pmtiles://https://raw.githubusercontent.com/weberjavi/admins-map/main/public/admins.pmtiles"
+          url={`pmtiles://${getBaseUrl()}/raw/zipcodes.pmtiles`}
         >
           <Layer
             id="admins"
