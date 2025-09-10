@@ -18,27 +18,27 @@ export default function App() {
     <div className={styles.mapContainer}>
       <Map
         initialViewState={{
-          longitude: -77.05747,
-          latitude: 38.91825,
-          zoom: 15.2,
+          longitude: -75.72000,
+          latitude: 42.72000,
+          zoom: 7,
         }}
         mapStyle="https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json"
         mapLib={maplibregl}
       >
         <Source
-          id="trees"
+          id="admins"
           type="vector"
-          url="pmtiles://https://raw.githubusercontent.com/weberjavi/caseytrees-vite-map/main/public/dc_trees.pmtiles"
+          url="pmtiles://https://raw.githubusercontent.com/weberjavi/admins-map/main/public/admins.pmtiles"
         >
           <Layer
-            id="trees"
-            type="circle"
-            source="trees"
-            source-layer="dc_trees"
+            id="admins"
+            type="fill"
+            source="admins"
+            source-layer="data"
             paint={{
-              "circle-radius": 3,
-              "circle-color": "#A4D48C",
-              "circle-opacity": 0.6,
+              "fill-color": "#A4D48C",
+              "fill-opacity": 1,
+              "fill-outline-color": "#000000",
             }}
           />
         </Source>
