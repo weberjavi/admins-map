@@ -32,6 +32,11 @@ const getBaseUrl = () => {
   if (window.location.hostname === 'localhost') {
     return '';
   }
+  // For GitHub Pages deployment, use the relative path
+  if (window.location.hostname.includes('github.io')) {
+    return window.location.pathname.replace(/\/$/, '');
+  }
+  // Fallback to raw GitHub content
   return 'https://raw.githubusercontent.com/weberjavi/admins-map/main/public';
 };
 
