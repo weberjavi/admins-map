@@ -149,7 +149,7 @@ export default function App() {
             }}
           />
         </Source>
-        <DeckGLOverlay layers={[layer]} getTooltip={({object}: PickingInfo<ZipCode>) => object && `${object.zipcode}\nPopulation: ${object.population}`} />
+        <DeckGLOverlay layers={[layer]} getTooltip={({object}: PickingInfo<ZipCode>) => object && `${object.zipcode}\nValue: ${Math.round(getAverageTimestamp(object.timestamps) * 100)}`} />
       </Map>
     </div>
   );
