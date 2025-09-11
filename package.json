@@ -1,14 +1,16 @@
 {
   "name": "rise-digital-admin-map-template",
+  "homepage": "https://weberjavi.github.io/admins-map/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "predeploy" : "yarn run build",
+    "deploy" : "gh-pages -d dist",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "deploy": "yarn run build && gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@deck.gl/core": "^9.1.14",
