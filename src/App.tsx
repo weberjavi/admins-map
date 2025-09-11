@@ -26,6 +26,15 @@ function DeckGLOverlay(props: any) {
   return null;
 }
 
+// Get the base URL for PMTiles files (works in dev and production)
+const getBaseUrl = () => {
+  if (window.location.hostname === 'localhost') {
+    return window.location.origin;
+  }
+  return 'https://raw.githubusercontent.com/weberjavi/admins-map/main/public';
+};
+
+
 export default function App() {
   useEffect(() => {
     const protocol = new Protocol();
@@ -37,8 +46,7 @@ export default function App() {
 
   const layer = new PolygonLayer<ZipCode>({
     id: 'PolygonLayer',
-    data: '/zipcodes.json',
-
+    data: `${getBaseUrl()}/zipcodes.json`,
     getPolygon: (d: ZipCode) => d.contour,
     getFillColor: (d: ZipCode) => [d.population / d.area / 60, 40, 100],
     getLineColor: [255, 255, 255],
@@ -47,11 +55,7 @@ export default function App() {
     pickable: true,
   });
 
-  // Get the base URL for PMTiles files (works in dev and production)
-  // const getBaseUrl = () => {
-  //   return window.location.origin;
-  // };
-
+  
   return (
     <div className={styles.mapContainer}>
       <Map
@@ -67,7 +71,7 @@ export default function App() {
           id="zipcodes"
           type="vector"
           // url={`pmtiles://${getBaseUrl()}/SF-zipcodes.pmtiles`}
-          url="pmtiles://https://raw.githubusercontent.com/weberjavi/admins-map/main/public/SF-zipcodes.pmtiles"
+          url={`pmtiles://${getBaseUrl()}/SF-zipcodes.pmtiles`}
         >
           <Layer
             id="zipcodes"
