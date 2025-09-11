@@ -64,14 +64,14 @@ export default function App() {
         mapLib={maplibregl}
       >
         <Source
-          id="admins"
+          id="zipcodes"
           type="vector"
-          url={`pmtiles://${getBaseUrl()}/raw/zipcodes.pmtiles`}
+          url={`pmtiles://${getBaseUrl()}/SF-zipcodes.pmtiles`}
         >
           <Layer
-            id="admins"
+            id="zipcodes"
             type="fill"
-            source="admins"
+            source="zipcodes"
             source-layer="data"
             paint={{
               "fill-color": "#A4D48C",
