@@ -48,9 +48,9 @@ export default function App() {
   });
 
   // Get the base URL for PMTiles files (works in dev and production)
-  const getBaseUrl = () => {
-    return window.location.origin;
-  };
+  // const getBaseUrl = () => {
+  //   return window.location.origin;
+  // };
 
   return (
     <div className={styles.mapContainer}>
@@ -66,7 +66,8 @@ export default function App() {
         <Source
           id="zipcodes"
           type="vector"
-          url={`pmtiles://${getBaseUrl()}/SF-zipcodes.pmtiles`}
+          // url={`pmtiles://${getBaseUrl()}/SF-zipcodes.pmtiles`}
+          url="pmtiles://https://raw.githubusercontent.com/weberjavi/admins-map/main/public/SF-zipcodes.pmtiles"
         >
           <Layer
             id="zipcodes"
