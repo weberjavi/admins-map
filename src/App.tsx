@@ -30,11 +30,12 @@ function DeckGLOverlay(props: any) {
 // Get the base URL for PMTiles files (works in dev and production)
 const getBaseUrl = () => {
   if (window.location.hostname === 'localhost') {
-    return '';
+    return window.location.origin;
   }
-  // For GitHub Pages deployment, use the relative path
+  // For GitHub Pages deployment, use the full absolute URL
   if (window.location.hostname.includes('github.io')) {
-    return window.location.pathname.replace(/\/$/, '');
+    const baseUrl = `${window.location.origin}${window.location.pathname.replace(/\/$/, '')}`;
+    return baseUrl;
   }
   // Fallback to raw GitHub content
   return 'https://raw.githubusercontent.com/weberjavi/admins-map/main/public';
